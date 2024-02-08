@@ -1,0 +1,61 @@
+﻿@model IEnumerable<ProyectoFinal.Models.Compra>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CostoTotal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaCompra)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TipoComprobante)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Proveedor)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CostoTotal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaCompra)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TipoComprobante)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Proveedor.Direccion)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.idCompra">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.idCompra">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.idCompra">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</body>
+</html>
